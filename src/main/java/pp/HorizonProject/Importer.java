@@ -1,8 +1,12 @@
-package main.java.pp.HorizonProject;
+package pp.HorizonProject;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,15 +18,31 @@ public class Importer {
 	
 	public DataModel dataModel = new DataModel();
 	
-	 public static void main( String[] args )
+	
+	//	main is only for tests
+	 public static void main( String[] args ) throws IOException
 	    {
 	        System.out.println( "Hello World!" );
+	        Importer importer = new Importer();
+	        importer.readFieles();
+	       
 	    }
 	
 	
-	public void readFieles() {
+	public  void readFieles() throws IOException {
 		
-		Path path = Paths.get("C:\\reporter-dane");
+		Path rootPath = Paths.get("C:\\reporter-dane");
+		List<Path> paths = findByFileExtension(rootPath, ".xls");
+		 
+		for (Path item : paths) {
+			
+			String itemAsString = item.toString();
+			File file = new File(itemAsString);
+			readExactFile(file);
+			
+	         System.out.println(item);
+	      }
+		
 	}
 	
 	
@@ -95,6 +115,23 @@ public class Importer {
 	public String readProjectName(Sheet sheet) {
 		return sheet.getSheetName();
 	}
+	
+	 public static List<Path> findByFileExtension(Path path, String fileExtension) throws IOException {
+
+	        if (!Files.isDirectory(path)) {
+	            throw new IllegalArgumentException("Path must be a directory!");
+	        }
+
+	        List<Path> result;
+	        try (Stream<Path> walk = Files.walk(path)) {
+	            result = walk
+	                    .filter(Files::isRegularFile)   // is a file
+	                    .filter(p -> p.getFileName().toString().endsWith(fileExtension))
+	                    .collect(Collectors.toList());
+	        }
+	        return result;
+
+	    }
 	
 	
 }
