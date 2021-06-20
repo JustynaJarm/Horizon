@@ -28,6 +28,7 @@ public class Importer {
 			worker = new Worker();
 			worker.setFullName(fullName);
 			worker.setLastName(readLastName(fullName));
+			dataModel.addWorker(worker);
 		}
 		
 		// Checking if project exists and if not, creating a new project
@@ -44,6 +45,7 @@ public class Importer {
 			if (!projectExists) {
 				project = new Project();
 				project.setName(projectName);
+				dataModel.addProject(project);
 			}
 			
 			// Recording tasks for a project
@@ -52,12 +54,13 @@ public class Importer {
 					Task task = new Task();
 					task.setDate(r.getCell(0).getDateCellValue());
 					task.setName(r.getCell(1).getStringCellValue());
-					task.setTime(r.getCell(3).getNumericCellValue());
+					task.setTime(r.getCell(2).getNumericCellValue());
 					task.setOwner(worker);
 					task.setProject(project);
 					// Updating tasks under worker and project
 					worker.addTask(task);
 					project.addTask(task);
+					dataModel.addTask(task);
 				}
 			}
 		}
