@@ -8,7 +8,7 @@ public class Worker {
 	String lastName;
 	String fullName;
 	
-	ArrayList<Task> tasks;
+	ArrayList<Task> tasks = new ArrayList<>();
 
 	public String getFullName() {
 		return fullName;

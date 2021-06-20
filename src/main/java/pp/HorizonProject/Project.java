@@ -8,7 +8,7 @@ public class Project {
 	
 	String name;
 	
-	ArrayList<Task> tasks;
+	ArrayList<Task> tasks = new ArrayList<>();;
 
 	public String getName() {
 		return name;
