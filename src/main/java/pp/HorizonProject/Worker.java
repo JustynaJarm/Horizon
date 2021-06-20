@@ -1,6 +1,8 @@
-package datamodel;
+package pp.HorizonProject;
 
 import java.util.Collection;
+
+import pp.HorizonProject.Task;
 
 public class Worker {
 	String lastName;
