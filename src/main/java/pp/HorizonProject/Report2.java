@@ -6,8 +6,12 @@ import java.util.ArrayList;
 
 
 public class Report2 extends Report {
-	DataModel database = new DataModel();
+	DataModel database;
 	ArrayList<Project> projects = database.getProjects();
+
+	public Report2(DataModel database) {
+		this.database = database;
+	}
 	
 	public void printReport(int year) {
 		System.out.println("2. Zestawienie Po Projektach (raport II)");

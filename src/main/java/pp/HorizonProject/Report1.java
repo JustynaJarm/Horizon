@@ -6,8 +6,13 @@ package pp.HorizonProject;
 import java.util.ArrayList;
 
 public class Report1 extends Report {
-	DataModel database = new DataModel();
+	
+	DataModel database;
 	ArrayList<Worker> workers = database.getWorkers();
+
+	public Report1(DataModel database) {
+		this.database = database;
+	}
 	
 	public void printReport(int year) {
 		System.out.println("1. Alfabetyczne Wypisanie Pracownikow (raport I)");

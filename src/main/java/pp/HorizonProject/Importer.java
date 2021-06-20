@@ -18,6 +18,7 @@ public class Importer {
 	
 	public DataModel dataModel = new DataModel();
 	
+	
 	 public static void main( String[] args ) throws EncryptedDocumentException, IOException
 	    {
 	        System.out.println( "Hello World!" );
@@ -38,7 +39,7 @@ public class Importer {
 	
 	public  void readFieles() throws IOException {
 		
-		Path rootPath = Paths.get("C:\\reporter-dane");
+		Path rootPath = Paths.get("C:\\Users\\harych\\Desktop\\reporter-dane\\reporter-dane");
 		List<Path> paths = findByFileExtension(rootPath, ".xls");
 		 
 		for (Path item : paths) {

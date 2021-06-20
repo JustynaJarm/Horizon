@@ -1,11 +1,16 @@
 package pp.HorizonProject;
 
+import java.io.IOException;
 import java.lang.invoke.SwitchPoint;
 
 
 public class App {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.out.println("Aktywna ścieżka: " + args[0]);
+		
+		Importer importer = new Importer();
+		importer.readFieles();//args[0]);
+		
 		
 	
 		while (true) {
@@ -15,7 +20,8 @@ public class App {
 			case 1:
 				System.out.println("Raport1");
 				Menu.getYearFromUser();
-				
+				Report1 report = new Report1(importer.dataModel);
+				report.printReport(2012);
 				break;
 			case 2:
 				System.out.println("Raport2");
