@@ -1,8 +1,8 @@
-package main.java.pp.HorizonProject;
+package pp.HorizonProject;
 import java.util.Date;
 
-import main.java.pp.HorizonProject.Project;
-import main.java.pp.HorizonProject.Worker;
+import pp.HorizonProject.Project;
+import pp.HorizonProject.Worker;
 
 public class Task {
 	

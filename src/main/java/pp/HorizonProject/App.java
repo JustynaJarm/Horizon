@@ -1,4 +1,4 @@
-package main.java.pp.HorizonProject;
+package pp.HorizonProject;
 
 public class App 
 {
