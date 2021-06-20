@@ -1,6 +1,6 @@
 package main.java.pp.HorizonProject;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
 import main.java.pp.HorizonProject.Task;
 
@@ -8,7 +8,7 @@ public class Project {
 	
 	String name;
 	
-	Collection<Task> tasks;
+	ArrayList<Task> tasks;
 
 	public String getName() {
 		return name;
@@ -16,6 +16,10 @@ public class Project {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public ArrayList<Task> getTasks() {
+		return tasks;
 	}
 	
 	public void addTask(Task task) {
