@@ -1,14 +1,9 @@
 //1. Wygenerowanie alfabetycznie pracownikow z liczba godzin jaka 
 //przepracowal w danym roku (program dostaje wskazanie na katalog z danymi 
 //a wypisac ma tabele posortowana po nazwiskach z danymi - sumaryczne godziny w roku)
-package main.java.pp.HorizonProject;
+package pp.HorizonProject;
 
 import java.util.ArrayList;
-
-import main.java.pp.HorizonProject.Worker;
-import main.java.pp.HorizonProject.Task;
-import main.java.pp.HorizonProject.Report;
-import main.java.pp.HorizonProject.DataModel;
 
 public class Report1 extends Report {
 	DataModel database = new DataModel();

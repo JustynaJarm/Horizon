@@ -2,33 +2,20 @@ package pp.HorizonProject;
 
 import java.lang.invoke.SwitchPoint;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-
 
 public class App {
-	public static void main(String[] args) throws ParseException {
-	Options options = new Options();
-	options.addOption("y", false, "Wprowadz rok");
-	CommandLineParser parser = new DefaultParser();
-	CommandLine cmd = parser.parse( options, args);
-	
-	if(cmd.hasOption("y")) {
-	    System.out.println("test");
-	}
-	else {
-	    // print the date
-	}
+	public static void main(String[] args) {
+		System.out.println("Aktywna ścieżka: " + args[0]);
+		
 	
 		while (true) {
 			Menu.printMenu();
-			int userInput = Menu.getUserInput();
+			int userInput = Menu.getReportFromUser();
 			switch (userInput) {
 			case 1:
 				System.out.println("Raport1");
+				Menu.getYearFromUser();
+				
 				break;
 			case 2:
 				System.out.println("Raport2");
