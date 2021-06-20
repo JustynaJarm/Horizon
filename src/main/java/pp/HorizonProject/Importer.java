@@ -16,34 +16,32 @@ public class Importer {
 		
 		// Checking if worker exists and if not, creating a new worker
 		String fullName = readFullName(file);
-		Boolean workerExists = false;
 		Worker worker = null;
 		for (Worker w : dataModel.workers) {
 			if (w.getFullName().equals(fullName)){
 				worker = w;
-				workerExists = true;
 			}
 		}
-		if (!workerExists) {
+		if (worker==null) {
 			worker = new Worker();
 			worker.setFullName(fullName);
 			worker.setLastName(readLastName(fullName));
+			dataModel.workers.add(worker);
 		}
 		
 		// Checking if project exists and if not, creating a new project
 		for (Sheet s : wb) {
 			String projectName = readProjectName(s);
-			Boolean projectExists = false;
 			Project project = null;
 			for (Project p : dataModel.projects) {
 				if (p.getName().equals(projectName)){
 					project = p;
-					projectExists = true;
 				}
 			}
-			if (!projectExists) {
+			if (project == null) {
 				project = new Project();
 				project.setName(projectName);
+				dataModel.projects.add(project);
 			}
 			
 			// Recording tasks for a project
