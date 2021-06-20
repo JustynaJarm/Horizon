@@ -1,9 +1,5 @@
-package pp.HorizonProject;
+package main.java.pp.HorizonProject;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )

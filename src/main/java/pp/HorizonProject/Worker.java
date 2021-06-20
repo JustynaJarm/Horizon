@@ -1,8 +1,8 @@
-package pp.HorizonProject;
+package main.java.pp.HorizonProject;
 
 import java.util.Collection;
 
-import pp.HorizonProject.Task;
+import main.java.pp.HorizonProject.Task;
 
 public class Worker {
 	String lastName;

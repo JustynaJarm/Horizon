@@ -1,5 +1,4 @@
-package pp.HorizonProject;
-
+package main.java.pp.HorizonProject;
 import java.util.Date;
 
 public class Task {
