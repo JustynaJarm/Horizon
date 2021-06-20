@@ -2,14 +2,27 @@ package pp.HorizonProject;
 
 import java.lang.invoke.SwitchPoint;
 
-/**
- * Hello world!
- *
- */
-public class App {
-	public static void main(String[] args)
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
-	{
+
+public class App {
+	public static void main(String[] args) throws ParseException {
+	Options options = new Options();
+	options.addOption("y", false, "Wprowadz rok");
+	CommandLineParser parser = new DefaultParser();
+	CommandLine cmd = parser.parse( options, args);
+	
+	if(cmd.hasOption("y")) {
+	    System.out.println("test");
+	}
+	else {
+	    // print the date
+	}
+	
 		while (true) {
 			Menu.printMenu();
 			int userInput = Menu.getUserInput();

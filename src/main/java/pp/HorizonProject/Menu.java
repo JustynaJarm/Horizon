@@ -2,6 +2,9 @@ package pp.HorizonProject;
 
 import java.util.Scanner;
 
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
 
 public class Menu {
@@ -25,6 +28,7 @@ public class Menu {
 	}
 
 	public static int getUserInput() {
+
 		try {
 			Scanner s = new Scanner(System.in);
 			return s.nextInt();
@@ -33,8 +37,6 @@ public class Menu {
 			System.out.println("Wybierz opcje od 0 do 7");
 			return -1;
 		}
-		
-		Options options = new Options();
 
 	}
 }
