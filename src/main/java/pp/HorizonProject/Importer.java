@@ -1,4 +1,4 @@
-package main.java.pp.HorizonProject;
+package pp.HorizonProject;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -14,9 +14,18 @@ public class Importer {
 	
 	public DataModel dataModel = new DataModel();
 	
-	 public static void main( String[] args )
+	 public static void main( String[] args ) throws EncryptedDocumentException, IOException
 	    {
 	        System.out.println( "Hello World!" );
+	        
+	        Importer imp = new Importer();
+	        imp.readExactFile(new File("C:\\Users\\harych\\Desktop\\reporter-dane\\reporter-dane\\2012\\01\\Kowalski_Jan.xls"));
+	        for (Task t : imp.dataModel.tasks) {
+	        	System.out.println(t.getDate());
+	        	System.out.println(t.getName());
+	        	System.out.println(t.getTime());
+	        }
+	        
 	    }
 	
 	
