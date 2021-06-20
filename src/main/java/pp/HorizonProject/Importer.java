@@ -22,13 +22,13 @@ public class Importer {
 	    {
 	        System.out.println( "Hello World!" );
 	        
-	        Importer imp = new Importer();
-	        imp.readExactFile(new File("C:\\Users\\harych\\Desktop\\reporter-dane\\reporter-dane\\2012\\01\\Kowalski_Jan.xls"));
-	        for (Task t : imp.dataModel.tasks) {
-	        	System.out.println(t.getDate());
-	        	System.out.println(t.getName());
-	        	System.out.println(t.getTime());
-	        }
+//	        Importer imp = new Importer();
+//	        imp.readExactFile(new File("C:\\Users\\harych\\Desktop\\reporter-dane\\reporter-dane\\2012\\01\\Kowalski_Jan.xls"));
+//	        for (Task t : imp.dataModel.tasks) {
+//	        	System.out.println(t.getDate());
+//	        	System.out.println(t.getName());
+//	        	System.out.println(t.getTime());
+//	        }
 	        
 	        Importer importer = new Importer();
 	        importer.readFieles();
@@ -45,9 +45,10 @@ public class Importer {
 			
 			String itemAsString = item.toString();
 			File file = new File(itemAsString);
+			System.out.println(item);
 			readExactFile(file);
 			
-	         System.out.println(item);
+	         
 	      }
 		
 	}
