@@ -54,8 +54,6 @@ public class App {
 			default:
 				System.out.println("Niepoprawne dane");
 			}
-
 		}
 	}
-
 }

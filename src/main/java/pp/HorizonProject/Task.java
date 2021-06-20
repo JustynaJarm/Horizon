@@ -11,6 +11,7 @@ public class Task {
 	public Double time;
 	public Worker owner;
 	public Project project;
+	
 	public String getName() {
 		return name;
 	}
