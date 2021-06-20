@@ -2,6 +2,7 @@ package pp.HorizonProject;
 
 import java.io.File;
 
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -27,14 +28,36 @@ public class Importer {
 			worker = new Worker();
 		}
 		
-		//read file name and save as Worker
-		
-		//loop
-		//read sheet name and save as Project
-			//loop
-			//read line and save as task, update worker and project
-		
-		
+		// Checking if project exists and if not, creating a new project
+		for (Sheet s : wb) {
+			String projectName = readProjectName(s);
+			Boolean projectExists = false;
+			Project project;
+			for (Project p : dataModel.projects) {
+				if (p.getName().equals(projectName)){
+					project = p;
+					projectExists = true;
+				}
+			}
+			if (!projectExists) {
+				project = new Project();
+			}
+			
+			// Recording tasks for a project
+			for (Row r : s) {
+				if (r.getRowNum()!=0) {
+					Task task = new Task();
+					task.setDate(r.getCell(0).getDateCellValue());
+					task.setName(r.getCell(1).getStringCellValue());
+					task.setTime(r.getCell(3).getNumericCellValue());
+					task.setOwner(worker);
+					task.setProject(project);
+					// Updating tasks under worker and project
+					worker.addTask(task);
+					project.addTask(task);
+				}
+			}
+		}
 	}
 	
 	public String readFileName(File file) {
