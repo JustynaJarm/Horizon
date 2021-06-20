@@ -15,7 +15,7 @@ public class Importer {
 		Workbook wb = WorkbookFactory.create(file);
 		
 		// Checking if worker exists and if not, creating a new worker
-		String fullName = readFileName(file);
+		String fullName = readFullName(file);
 		Boolean workerExists = false;
 		Worker worker;
 		for (Worker w : dataModel.workers) {
@@ -26,6 +26,8 @@ public class Importer {
 		}
 		if (!workerExists) {
 			worker = new Worker();
+			worker.setFullName(fullName);
+			worker.setLastName(readLastName(fullName));
 		}
 		
 		// Checking if project exists and if not, creating a new project
@@ -41,6 +43,7 @@ public class Importer {
 			}
 			if (!projectExists) {
 				project = new Project();
+				project.setName(projectName);
 			}
 			
 			// Recording tasks for a project
@@ -60,12 +63,22 @@ public class Importer {
 		}
 	}
 	
-	public String readFileName(File file) {
-		return "Jan Kowalski";
+	public String readFullName(File file) {
+		String nameUnformatted = file.getName();
+		// Removing file extension ".xls"
+		nameUnformatted = nameUnformatted.substring(0, nameUnformatted.length() - 4);
+		// Removing "_"
+		String words[] = nameUnformatted.split("_", 2);		
+		return words[0] + " " + words[1];
+	}
+	
+	public String readLastName(String fullName) {
+		String words[] = fullName.split(" ", 2);		
+		return words[1];
 	}
 	
 	public String readProjectName(Sheet sheet) {
-		return "Projekt1";
+		return sheet.getSheetName();
 	}
 	
 	
