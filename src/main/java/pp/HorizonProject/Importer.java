@@ -1,7 +1,10 @@
-package pp.HorizonProject;
-
+package main.java.pp.HorizonProject;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -11,7 +14,20 @@ public class Importer {
 	
 	public DataModel dataModel = new DataModel();
 	
-	public void readExactFile(File file) throws Exception {
+	 public static void main( String[] args )
+	    {
+	        System.out.println( "Hello World!" );
+	    }
+	
+	
+	public void readFieles() {
+		
+		Path path = Paths.get("C:\\reporter-dane");
+	}
+	
+	
+	public void readExactFile(File file) throws EncryptedDocumentException, IOException {
+
 		Workbook wb = WorkbookFactory.create(file);
 		
 		// Checking if worker exists and if not, creating a new worker
@@ -50,12 +66,13 @@ public class Importer {
 					Task task = new Task();
 					task.setDate(r.getCell(0).getDateCellValue());
 					task.setName(r.getCell(1).getStringCellValue());
-					task.setTime(r.getCell(3).getNumericCellValue());
+					task.setTime(r.getCell(2).getNumericCellValue());
 					task.setOwner(worker);
 					task.setProject(project);
 					// Updating tasks under worker and project
 					worker.addTask(task);
 					project.addTask(task);
+					dataModel.addTask(task);
 				}
 			}
 		}
