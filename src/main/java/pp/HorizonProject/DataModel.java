@@ -34,4 +34,5 @@ public class DataModel {
 	public void addTask(Task task) {
 		this.tasks.add(task);
 	}
+
 }

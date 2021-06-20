@@ -1,6 +1,9 @@
 package main.java.pp.HorizonProject;
 import java.util.Date;
 
+import main.java.pp.HorizonProject.Project;
+import main.java.pp.HorizonProject.Worker;
+
 public class Task {
 	
 	public String name;
