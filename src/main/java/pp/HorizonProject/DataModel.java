@@ -1,10 +1,10 @@
-package main.java.pp.HorizonProject;
+package pp.HorizonProject;
 
 import java.util.ArrayList;
 
-import main.java.pp.HorizonProject.Project;
-import main.java.pp.HorizonProject.Worker;
-import main.java.pp.HorizonProject.Task;
+import pp.HorizonProject.Project;
+import pp.HorizonProject.Worker;
+import pp.HorizonProject.Task;
 
 public class DataModel {
 	ArrayList<Project> projects = new ArrayList<Project>();

@@ -11,13 +11,13 @@ public class Importer {
 	
 	public DataModel dataModel = new DataModel();
 	
-	public void readExactFile(File file) {
+	public void readExactFile(File file) throws Exception {
 		Workbook wb = WorkbookFactory.create(file);
 		
 		// Checking if worker exists and if not, creating a new worker
 		String fullName = readFullName(file);
 		Boolean workerExists = false;
-		Worker worker;
+		Worker worker = null;
 		for (Worker w : dataModel.workers) {
 			if (w.getFullName().equals(fullName)){
 				worker = w;
@@ -34,7 +34,7 @@ public class Importer {
 		for (Sheet s : wb) {
 			String projectName = readProjectName(s);
 			Boolean projectExists = false;
-			Project project;
+			Project project = null;
 			for (Project p : dataModel.projects) {
 				if (p.getName().equals(projectName)){
 					project = p;

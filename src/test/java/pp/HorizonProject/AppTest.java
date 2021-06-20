@@ -1,4 +1,4 @@
-package test.java.pp.HorizonProject;
+package pp.HorizonProject;
 
 import static org.junit.Assert.assertTrue;
 
