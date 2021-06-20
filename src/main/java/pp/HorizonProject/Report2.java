@@ -14,7 +14,7 @@ public class Report2 extends Report {
 	ArrayList<Project> projects = database.getProjects();
 	
 	public void printReport(int year) {
-		System.out.println("1. Alfabetyczne Wypisanie Pracownikow (raport I)");
+		System.out.println("2. Zestawienie Po Projektach (raport II)");
 		System.out.println("Raport za rok: " + year);
 		
 		for (Project project : projects) {
