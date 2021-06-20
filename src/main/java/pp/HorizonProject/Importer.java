@@ -1,7 +1,10 @@
-package pp.HorizonProject;
-
+package main.java.pp.HorizonProject;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -11,7 +14,20 @@ public class Importer {
 	
 	public DataModel dataModel = new DataModel();
 	
-	public void readExactFile(File file) {
+	
+	 public static void main( String[] args )
+	    {
+	        System.out.println( "Hello World!" );
+	    }
+	
+	
+	public void readFieles() {
+		
+		Path path = Paths.get("C:\\reporter-dane");
+	}
+	
+	
+	public void readExactFile(File file) throws EncryptedDocumentException, IOException {
 		Workbook wb = WorkbookFactory.create(file);
 		
 		// Checking if worker exists and if not, creating a new worker
