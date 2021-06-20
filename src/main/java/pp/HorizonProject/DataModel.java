@@ -11,6 +11,18 @@ public class DataModel {
 	ArrayList<Worker> workers = new ArrayList<Worker>();
 	ArrayList<Task> tasks = new ArrayList<Task>();
 	
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
+	
+	public ArrayList<Worker> getWorkers() {
+		return workers;
+	}
+	
+	public ArrayList<Task> getTasks() {
+		return tasks;
+	}
+	
 	public void addProject(Project project) {
 		this.projects.add(project);
 	}
