@@ -22,8 +22,4 @@ public class Project {
 		return tasks;
 	}
 	
-	public void addTask(Task task) {
-		this.tasks.add(task);
-	}
-
 }

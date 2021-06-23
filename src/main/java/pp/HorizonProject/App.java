@@ -11,7 +11,7 @@ public class App {
 		String workerName;
 		String projectName;
 
-		System.out.println("Aktywna ścieżka: " + args[0]);
+		//System.out.println("Aktywna ścieżka: " + args[0]);
 		Importer importer = new Importer();
 		// importer.readFieles();//args[0]);
 

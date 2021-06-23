@@ -22,17 +22,5 @@ public class DataModel {
 	public ArrayList<Task> getTasks() {
 		return tasks;
 	}
-	
-	public void addProject(Project project) {
-		this.projects.add(project);
-	}
-	
-	public void addWorker(Worker worker) {
-		this.workers.add(worker);
-	}
-	
-	public void addTask(Task task) {
-		this.tasks.add(task);
-	}
 
 }

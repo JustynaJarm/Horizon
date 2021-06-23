@@ -8,10 +8,11 @@ import java.util.ArrayList;
 public class Report1 extends Report {
 	
 	DataModel database;
-	ArrayList<Worker> workers = database.getWorkers();
+	ArrayList<Worker> workers;
 
 	public Report1(DataModel database) {
 		this.database = database;
+		this.workers = database.getWorkers();
 	}
 	
 	public void printReport(int year) {
@@ -19,7 +20,7 @@ public class Report1 extends Report {
 		System.out.println("Raport za rok: " + year);
 		
 		for (Worker worker : workers) {
-			int workTimeInYearByWorker = 0;
+			double workTimeInYearByWorker = 0;
 			
 			for (Task task : worker.getTasks()) {
 				if (task.getDate().getYear() == year) {

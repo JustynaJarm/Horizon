@@ -35,14 +35,18 @@ public class Importer {
 	        importer.readFieles();
 
 	    }
+	 
+	 public Importer() throws IOException {
+		 readFieles();
+	 }
 	
 	
 	public  void readFieles() throws IOException {
 		
 		Path rootPath = Paths.get("C:\\Users\\harych\\Desktop\\reporter-dane\\reporter-dane");
-		List<Path> paths = findByFileExtension(rootPath, ".xls");
+		List<Object> paths = findByFileExtension(rootPath, ".xls");
 		 
-		for (Path item : paths) {
+		for (Object item : paths) {
 			
 			String itemAsString = item.toString();
 			File file = new File(itemAsString);
@@ -92,16 +96,27 @@ public class Importer {
 			// Recording tasks for a project
 			for (Row r : s) {
 				if (r.getRowNum()!=0) {
-					Task task = new Task();
-					task.setDate(r.getCell(0).getDateCellValue());
-					task.setName(r.getCell(1).getStringCellValue());
-					task.setTime(r.getCell(2).getNumericCellValue());
-					task.setOwner(worker);
-					task.setProject(project);
-					// Updating tasks under worker and project
-					worker.addTask(task);
-					project.addTask(task);
-					dataModel.addTask(task);
+					try {
+						Task task = new Task();
+						task.setDate(r.getCell(0).getDateCellValue());
+						task.setName(r.getCell(1).getStringCellValue());
+						if (r.getCell(2).getNumericCellValue() < 0){
+							throw new Exception();
+						} else {
+							task.setTime(r.getCell(2).getNumericCellValue());
+						}
+						task.setOwner(worker);
+						task.setProject(project);
+						// Updating tasks under worker and project
+						worker.tasks.add(task);
+						project.tasks.add(task);
+						dataModel.tasks.add(task);
+						System.out.println(worker.getFullName() + " " + task.getDate() + " " + task.getTime() + " " + task.getProject().getName() + " " + task.getName());
+						
+					} catch (Exception e) {
+						System.out.println("Niepoprawne dane w pliku wejściowym: " + file.getName());
+						System.out.println("Wiersz numer " + r.getRowNum() + " został pominięty");
+					}
 				}
 			}
 		}
@@ -125,13 +140,13 @@ public class Importer {
 		return sheet.getSheetName();
 	}
 	
-	 public static List<Path> findByFileExtension(Path path, String fileExtension) throws IOException {
+	 public static List<Object> findByFileExtension(Path path, String fileExtension) throws IOException {
 
 	        if (!Files.isDirectory(path)) {
 	            throw new IllegalArgumentException("Path must be a directory!");
 	        }
 
-	        List<Path> result;
+	        List<Object> result;
 	        try (Stream<Path> walk = Files.walk(path)) {
 	            result = walk
 	                    .filter(Files::isRegularFile)   // is a file
