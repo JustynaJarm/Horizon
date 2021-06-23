@@ -16,41 +16,44 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class Importer {
 	
-	public DataModel dataModel = new DataModel();
+	public static DataModel dataModel;
 	
 	
-	 public static void main( String[] args ) throws EncryptedDocumentException, IOException
-	    {
-	        System.out.println( "Hello World!" );
-	        
-//	        Importer imp = new Importer();
-//	        imp.readExactFile(new File("C:\\Users\\harych\\Desktop\\reporter-dane\\reporter-dane\\2012\\01\\Kowalski_Jan.xls"));
-//	        for (Task t : imp.dataModel.tasks) {
-//	        	System.out.println(t.getDate());
-//	        	System.out.println(t.getName());
-//	        	System.out.println(t.getTime());
-//	        }
-	        
-	        Importer importer = new Importer();
-	        importer.readFieles();
+	 public void main( String[] args ) throws EncryptedDocumentException, IOException
+	    {   
+	        Path testPath = Paths.get("C:\\reporter-dane");
+	        DataModel testDataModel = new DataModel();
+	        Importer importer = new Importer(testPath, testDataModel);
+//	        System.out.println(dataModel.toString());
 
 	    }
 	 
-	 public Importer() throws IOException {
-		 readFieles();
+	 public Importer() {};
+	 
+	 public Importer(Path rootPath, DataModel dataModel)  {
+		 
+		 this.dataModel = dataModel;
+		 
+		 try {
+			 
+			readFieles(rootPath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	 }
+	 
 	
 	
-	public  void readFieles() throws IOException {
+	public  void readFieles(Path rootPath) throws IOException {
 		
-		Path rootPath = Paths.get("C:\\Users\\harych\\Desktop\\reporter-dane\\reporter-dane");
 		List<Object> paths = findByFileExtension(rootPath, ".xls");
 		 
 		for (Object item : paths) {
 			
 			String itemAsString = item.toString();
 			File file = new File(itemAsString);
-			System.out.println(item);
+//			System.out.println(item);
 			readExactFile(file);
 			
 	         
@@ -111,10 +114,10 @@ public class Importer {
 						worker.tasks.add(task);
 						project.tasks.add(task);
 						dataModel.tasks.add(task);
-						System.out.println(worker.getFullName() + " " + task.getDate() + " " + task.getTime() + " " + task.getProject().getName() + " " + task.getName());
+//						System.out.println(worker.getFullName() + " " + task.getDate() + " " + task.getTime() + " " + task.getProject().getName() + " " + task.getName());
 						
 					} catch (Exception e) {
-						System.out.println("Niepoprawne dane w pliku wejściowym: " + file.getName());
+						System.out.println("Niepoprawne dane w pliku wejściowym: " + file.getName() + project.getName() + file.getAbsolutePath());
 						System.out.println("Wiersz numer " + r.getRowNum() + " został pominięty");
 					}
 				}

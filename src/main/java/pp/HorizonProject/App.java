@@ -2,6 +2,8 @@ package pp.HorizonProject;
 
 import java.io.IOException;
 import java.lang.invoke.SwitchPoint;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class App {
 	
@@ -11,9 +13,12 @@ public class App {
 		String workerName;
 		String projectName;
 
-		//System.out.println("Aktywna ścieżka: " + args[0]);
-		Importer importer = new Importer();
-		// importer.readFieles();//args[0]);
+		// Uwaga do celów testowych nalezy ustawić parametr wywołania w postaci ścieżki do katalogu
+		// Run configurations > Arguments > Program Arguments > tu wpisz scieżkę > Apply > Run
+		System.out.println("Aktywna ścieżka: " + args[0]);
+		DataModel dataModel = new DataModel();
+		Path rootPath = Paths.get(args[0].toString());
+		Importer importer = new Importer(rootPath, dataModel);
 
 		while (true) {
 			Menu.printMenu();
