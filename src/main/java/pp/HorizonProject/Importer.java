@@ -9,6 +9,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -98,24 +102,53 @@ public class Importer {
 				if (r.getRowNum()!=0) {
 					try {
 						Task task = new Task();
-						task.setDate(r.getCell(0).getDateCellValue());
-						task.setName(r.getCell(1).getStringCellValue());
-						if (r.getCell(2).getNumericCellValue() < 0){
-							throw new Exception();
-						} else {
-							task.setTime(r.getCell(2).getNumericCellValue());
+						Cell c1 = r.getCell(0);
+						Cell c2 = r.getCell(1);
+						Cell c3 = r.getCell(2);
+						if (!((c1 == null || c1.getCellType() == CellType.BLANK) &&
+							  (c2 == null || c2.getCellType() == CellType.BLANK) &&
+							  (c3 == null || c3.getCellType() == CellType.BLANK))) {
+							// If not true that all cells are blank, try to create a task
+							// Reading column 1
+							if (c1 == null || c1.getCellType() == CellType.BLANK) {
+								throw new Exception("Data nie jest uzupełniona");
+							} else if (!DateUtil.isCellDateFormatted(c1)){
+								throw new Exception("Błędny format daty");
+							} else {
+								task.setDate(c1.getDateCellValue());
+							}
+							// Reading column 2
+							if (c2 == null || c2.getCellType() == CellType.BLANK) {
+								throw new Exception("Nazwa zadania nie jest uzupełniona");
+							} else if (c2.getCellType()!=CellType.STRING){ 
+								throw new Exception("Błędny format nazwy zadania");
+							} else {
+								task.setName(c2.getStringCellValue());
+							}
+							// Reading column 3
+							if (c3 == null || c3.getCellType() == CellType.BLANK) {
+								throw new Exception("Liczba godzin nie jest uzupełniona");
+							} else if (c3.getCellType()!=CellType.NUMERIC){
+								throw new Exception("Błędny format liczby przepracowanych godzin");
+							} else if (c3.getNumericCellValue() < 0){
+								throw new Exception("Wartość przepracowanych godzin jest ujemna");
+							} else {
+								task.setTime(c3.getNumericCellValue());
+							}
+							task.setOwner(worker);
+							task.setProject(project);
+							// Updating tasks under worker and project
+							worker.tasks.add(task);
+							project.tasks.add(task);
+							dataModel.tasks.add(task);
 						}
-						task.setOwner(worker);
-						task.setProject(project);
-						// Updating tasks under worker and project
-						worker.tasks.add(task);
-						project.tasks.add(task);
-						dataModel.tasks.add(task);
-//						System.out.println(worker.getFullName() + " " + task.getDate() + " " + task.getTime() + " " + task.getProject().getName() + " " + task.getName());
-						
 					} catch (Exception e) {
-						System.out.println("Niepoprawne dane w pliku wejściowym: " + file.getName() + project.getName() + file.getAbsolutePath());
-						System.out.println("Wiersz numer " + r.getRowNum() + " został pominięty");
+						int rownum = r.getRowNum()+1;
+						System.out.println("--------------------------------------------------------------------------------");
+						System.out.println("Niepoprawne dane w pliku wejściowym: " + file.getAbsolutePath());
+						System.out.println("Kod błędu: " + e.getMessage());
+						System.out.println("Wiersz numer " + rownum + " w arkuszu '" + project.getName() + "' został pominięty");
+						
 					}
 				}
 			}
