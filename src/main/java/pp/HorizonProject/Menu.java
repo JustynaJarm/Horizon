@@ -13,11 +13,11 @@ public class Menu {
 		System.out.println(dash.repeat(COLUMN_WIDTH));
 		System.out.println("| 1 | Liczba godzin przepracowanych w danym roku (wg. pracowników)"); // podaj rok
 		System.out.println("| 2 | Liczba godzin przepracowanych w danym roku (wg. projektów)"); // podaj rok + projekt
-		System.out.println("| 3 | Liczba godzin przepracowanych w danym roku przez danego pracownika"); //podaj rok + pracownika
+		System.out.println("| 3 | Liczba godzin przepracowanych w danym roku przez danego pracownika"); // podaj rok + prac
 		System.out.println("| 4 | Procentowe zaangażowanie pracowników w projekty w danym roku"); // podaj rok
 		System.out.println("| 5 | Liczba godzin przepracowanych w danym projekcie (wg. pracowników)"); // podaj projekt
 		System.out.println("| 6 | Wykres słupkowy: liczba godzin przepracowanych w projektach w danym roku"); // podaj rok
-		System.out.println("| 7 | Wykres kołowy: procentowe zaangażowanie pracownika w projekt w danym roku)"); // podaj rok + pracownika
+		System.out.println("| 7 | Wykres kołowy: procentowe zaangażowanie pracownika w projekt w danym roku)"); // podaj rok + prac
 		System.out.println("| 0 | Zakończ program");
 		System.out.println(dash.repeat(COLUMN_WIDTH));
 	}
@@ -40,7 +40,8 @@ public class Menu {
 			try {
 				Scanner s = new Scanner(System.in);
 				year = s.nextInt();
-				if (year < 2000) System.out.println("Dane dostępne dla lat 2000+");
+				if (year < 2000)
+					System.out.println("Dane dostępne dla lat 2000+");
 			} catch (Exception e) {
 				System.out.println("Niepoprawne dane! Wprowadź liczbę");
 			}
@@ -48,27 +49,48 @@ public class Menu {
 		return year;
 	}
 
-	public static String getWorkerFromUser() {
-		System.out.println("Podaj pracownika do raportu: ");
-		try {
-			Scanner s = new Scanner(System.in);
-			return s.nextLine();
-
-		} catch (Exception e) {
-			System.out.println("Niepoprawne dane!");
-			return null;
+	// Wymagane pelne imie, format: Kowalski Jan
+	public static String getWorkerFromUser(DataModel dataModel) {
+		boolean workerNotFound = true;
+		String workerName = "";
+		System.out.println("Podaj nazwisko i imię pracownika do raportu: ");
+		Scanner s = new Scanner(System.in);
+		while (workerNotFound) {
+			try {
+				workerName = s.nextLine();
+				for (Worker p : dataModel.getWorkers()) {
+					if (workerName.equals(p.getFullName())) {
+						System.out.println("Znaleziono pracownika '" + workerName + "'\n");
+						workerNotFound = false;
+					}
+				}
+				if (workerNotFound) System.out.println("Pracownik '" + workerName + "' nie istnieje. Wprowadź ponownie");
+			} catch (Exception e) {
+				System.out.println("Niepoprawne dane! Wprowadź ponownie");
+			}
 		}
+		return workerName;
 	}
-	
-	public static String getProjectFromUser() {
-		System.out.println("Podaj nazwę projektu do raportu: ");
-		try {
-			Scanner s = new Scanner(System.in);
-			return s.nextLine();
 
-		} catch (Exception e) {
-			System.out.println("Niepoprawne dane!");
-			return null;
+	public static String getProjectFromUser(DataModel dataModel) {
+		boolean projectNotFound = true;
+		String projectName = "";
+		System.out.println("Podaj nazwę projektu do raportu: ");
+		Scanner s = new Scanner(System.in);
+		while (projectNotFound) {
+			try {
+				projectName = s.nextLine();
+				for (Project p : dataModel.getProjects()) {
+					if (projectName.equals(p.getName())) {
+						System.out.println("Znaleziono projekt '" + projectName + "'\n");
+						projectNotFound = false;
+					}
+				}
+				if (projectNotFound) System.out.println("Projekt '" + projectName + "' nie istnieje. Wprowadź ponownie");
+			} catch (Exception e) {
+				System.out.println("Niepoprawne dane! Wprowadź ponownie");
+			}
 		}
+		return projectName;
 	}
 }
