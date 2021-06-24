@@ -22,10 +22,10 @@ public class Report1 extends Report {
 		System.out.println("1. Alfabetyczne Wypisanie Pracownikow (raport I)");
 		System.out.println("Raport za rok: " + year);
 		
+		int lp = 1;
 		workers.sort((worker1, worker2) -> worker1.getLastName().compareTo(worker2.getLastName()));
 		setHeaders("Lp.", "Imie i nazwisko", "Liczba godzin w roku");
 		
-		int lp = 1;
 		for (Worker worker : workers) {
 			double workTimeInYearByWorker = 0;
 			

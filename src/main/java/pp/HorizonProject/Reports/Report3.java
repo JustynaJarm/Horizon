@@ -2,8 +2,10 @@
 //- wypisac powinnismy tabele w ktorej bedzie podany miesiac a w niej projekty i ile godizn na nie poswiecil
 package pp.HorizonProject.Reports;
 
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 
 import pp.HorizonProject.DataExtraction.DataModel;
 import pp.HorizonProject.DataExtraction.Task;
@@ -22,10 +24,10 @@ public class Report3 extends Report{
 		System.out.println("3. Szczegółowy wykaz pracy danego pracownika (raport III)");
 		System.out.println("Raport dla pracownika: " + selectedWorker + "(rok: " + year + ")");
 		
+		int lp = 1;
 		setHeaders("Lp.", "Miesiąc", "Projekt", "Liczba godzin");
 		Worker foundWorker = findWorker(selectedWorker, this.workers);
 		ArrayList<Task> tasksToPrint = new ArrayList<Task>();
-		int lp = 1;
 		
 		for (Task task : foundWorker.getTasks()) {
 			if (task.getDate().getYear() == year) {
@@ -44,7 +46,7 @@ public class Report3 extends Report{
 		}
 
 		for (Task task : tasksToPrint) {
-			addRow(String.valueOf(lp), String.valueOf(task.getDate().getMonth()), task.getProject().getName(), String.valueOf(task.getTime()));
+			addRow(String.valueOf(lp), String.valueOf(task.getDate().getMonth().getDisplayName(TextStyle.FULL_STANDALONE, new Locale("pl", "PL"))), task.getProject().getName(), String.valueOf(task.getTime()));
 			lp++;
 		}
 		
