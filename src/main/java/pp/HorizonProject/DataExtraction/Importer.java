@@ -1,4 +1,4 @@
-package pp.HorizonProject;
+package pp.HorizonProject.DataExtraction;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -85,6 +84,14 @@ public class Importer {
 		// Checking if project exists and if not, creating a new project
 		for (Sheet s : wb) {
 			String projectName = readProjectName(s);
+			
+			// Dealing with letter size and spaces 
+			projectName = projectName.replaceAll("\\s", "");
+			String firstLetter = projectName.substring(0, 1).toUpperCase();
+			String restOfName = projectName.substring(1).toLowerCase();
+			projectName = firstLetter+restOfName;
+			
+			
 			Project project = null;
 			for (Project p : dataModel.projects) {
 				if (p.getName().equals(projectName)){
