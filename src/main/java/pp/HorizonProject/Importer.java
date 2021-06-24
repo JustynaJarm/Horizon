@@ -46,7 +46,6 @@ public class Importer {
 	
 	
 	public  void readFieles(Path rootPath) throws IOException {
-		// Path rootPath = Paths.get("C:\\Users\\hants\\Desktop\\Metody Wytwarzania Oprogramowania\\Semestr 2\\Pracownia projektowa\\reporter-dane\\2012");
 		List<Object> paths = findByFileExtension(rootPath, ".xls");
 		 
 		for (Object item : paths) {

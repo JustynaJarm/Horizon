@@ -28,21 +28,21 @@ public class App {
 			switch (userInput) {
 			case 1:
 				reportYear = Menu.getYearFromUser();
-				System.out.println("Raport 1");
-				Report1 report = new Report1(importer.dataModel);
-				report.printReport(reportYear);
+				Report1 report1 = new Report1(importer.dataModel);
+				report1.printReport(reportYear);
 				break;
 			case 2:
 				reportYear = Menu.getYearFromUser();
-				projectName = Menu.getProjectFromUser();
-				System.out.println("Raport 2");
-
+				Report2 report2 = new Report2(importer.dataModel);
+				report2.printReport(reportYear);
+				
 				break;
 			case 3:
 				reportYear = Menu.getYearFromUser();
 				workerName = Menu.getWorkerFromUser();
-				System.out.println("Raport 3");
-
+				Report3 report3 = new Report3(importer.dataModel);
+				report3.printReport(reportYear, workerName);
+				
 				break;
 			case 4:
 				reportYear = Menu.getYearFromUser();
