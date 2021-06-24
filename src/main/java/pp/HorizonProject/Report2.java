@@ -14,7 +14,7 @@ public class Report2 extends Report {
 		this.projects = database.getProjects();
 	}
 	
-	public void printReport(int year) {
+	public ArrayList<Project> printReport(int year) {
 		System.out.println("2. Zestawienie Po Projektach (raport II)");
 		System.out.println("Raport za rok: " + year);
 		
@@ -36,5 +36,6 @@ public class Report2 extends Report {
 		}
 		
 		print();
+		return projects;
 	}
 }

@@ -22,7 +22,7 @@ public class Report3 extends Report{
 		this.workers = database.getWorkers();
 	}
 	
-	public void printReport(int year, String selectedWorker) {
+	public ArrayList<Task> printReport(int year, String selectedWorker) {
 		System.out.println("3. Szczegółowy wykaz pracy danego pracownika (raport III)");
 		System.out.println("Raport dla pracownika: " + selectedWorker + "(rok: " + year + ")");
 		
@@ -53,6 +53,7 @@ public class Report3 extends Report{
 		}
 		
 		print();
+		return tasksToPrint;
 	}
 	
 	public Worker findWorker(String workerToFind) {

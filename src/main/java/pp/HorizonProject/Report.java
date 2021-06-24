@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public abstract class Report {
-	public void printReport() {}
+//	public void printReport() {}
 	
 	private static final String HORIZONTAL_SEP = "-";
 	private String verticalSep;

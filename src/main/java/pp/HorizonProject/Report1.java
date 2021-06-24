@@ -14,7 +14,7 @@ public class Report1 extends Report {
 		this.workers = database.getWorkers();
 	}
 	
-	public void printReport(int year) {
+	public ArrayList<Worker> printReport(int year) {
 		System.out.println("1. Alfabetyczne Wypisanie Pracownikow (raport I)");
 		System.out.println("Raport za rok: " + year);
 		
@@ -36,5 +36,6 @@ public class Report1 extends Report {
 		}
 		
 		print();
+		return workers;
 	}
 }
