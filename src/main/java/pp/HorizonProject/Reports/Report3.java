@@ -1,17 +1,13 @@
 //Szczegolowy wykaz pracy danego pracownika - na wejsciu wybieramy rok oraz pracownika 
 //- wypisac powinnismy tabele w ktorej bedzie podany miesiac a w niej projekty i ile godizn na nie poswiecil
-package pp.HorizonProject;
+package pp.HorizonProject.Reports;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.time.Month;
 
-import pp.HorizonProject.Project;
-import pp.HorizonProject.Task;
+import pp.HorizonProject.DataExtraction.DataModel;
+import pp.HorizonProject.DataExtraction.Task;
+import pp.HorizonProject.DataExtraction.Worker;
 
 public class Report3 extends Report{
 	DataModel database = new DataModel();
@@ -27,7 +23,7 @@ public class Report3 extends Report{
 		System.out.println("Raport dla pracownika: " + selectedWorker + "(rok: " + year + ")");
 		
 		setHeaders("Lp.", "Miesiąc", "Projekt", "Liczba godzin");
-		Worker foundWorker = findWorker(selectedWorker);
+		Worker foundWorker = findWorker(selectedWorker, this.workers);
 		ArrayList<Task> tasksToPrint = new ArrayList<Task>();
 		int lp = 1;
 		
@@ -56,10 +52,12 @@ public class Report3 extends Report{
 		return tasksToPrint;
 	}
 	
-	public Worker findWorker(String workerToFind) {
+	// Dodałem workers jako parametr, aby w testach móc wstawiać dowolną tablicę
+	public Worker findWorker(String workerToFind, ArrayList<Worker> workers ) {
 		Worker foundWorker = null;
+		ArrayList<Worker> workersToSearch = workers;
 		
-		for (Worker worker : workers) {
+		for (Worker worker : workersToSearch) {
 			if (worker.getFullName().equals(workerToFind)) {
 				return foundWorker = worker;
 			}
