@@ -12,7 +12,7 @@ public class Menu {
 		System.out.println("| X | Wybierz raport z listy podając nr opcji menu ");
 		System.out.println(dash.repeat(COLUMN_WIDTH));
 		System.out.println("| 1 | Liczba godzin przepracowanych w danym roku (wg. pracowników)"); // podaj rok
-		System.out.println("| 2 | Liczba godzin przepracowanych w danym roku (wg. projektów)"); // podaj rok + projekt
+		System.out.println("| 2 | Liczba godzin przepracowanych w danym roku (wg. projektów)"); // podaj rok
 		System.out.println("| 3 | Liczba godzin przepracowanych w danym roku przez danego pracownika"); // podaj rok + prac
 		System.out.println("| 4 | Procentowe zaangażowanie pracowników w projekty w danym roku"); // podaj rok
 		System.out.println("| 5 | Liczba godzin przepracowanych w danym projekcie (wg. pracowników)"); // podaj projekt
