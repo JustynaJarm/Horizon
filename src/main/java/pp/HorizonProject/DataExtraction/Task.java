@@ -1,10 +1,7 @@
-package pp.HorizonProject;
+package pp.HorizonProject.DataExtraction;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
-
-import pp.HorizonProject.Project;
-import pp.HorizonProject.Worker;
 
 public class Task {
 	

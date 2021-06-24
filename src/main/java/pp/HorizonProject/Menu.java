@@ -2,6 +2,10 @@ package pp.HorizonProject;
 
 import java.util.Scanner;
 
+import pp.HorizonProject.DataExtraction.DataModel;
+import pp.HorizonProject.DataExtraction.Project;
+import pp.HorizonProject.DataExtraction.Worker;
+
 public class Menu {
 
 	public static final int COLUMN_WIDTH = 80;

@@ -1,8 +1,12 @@
 //Zestawienie po projektach - Dostajemy katalog z danymi i podajemy 
 //rok a wypluc mamy sumaryczna liczbe godizn w danym roku poswiecona na dany projekt (dodatkowo wykres slupkowy)
-package pp.HorizonProject;
+package pp.HorizonProject.Reports;
 
 import java.util.ArrayList;
+
+import pp.HorizonProject.DataExtraction.DataModel;
+import pp.HorizonProject.DataExtraction.Project;
+import pp.HorizonProject.DataExtraction.Task;
 
 
 public class Report2 extends Report {

@@ -1,4 +1,4 @@
-package pp.HorizonProject;
+package pp.HorizonProject.Reports;
 
 import java.util.ArrayList;
 import java.util.Arrays;

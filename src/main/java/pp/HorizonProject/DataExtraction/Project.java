@@ -1,8 +1,8 @@
-package pp.HorizonProject;
+package pp.HorizonProject.DataExtraction;
 
 import java.util.ArrayList;
 
-import pp.HorizonProject.Task;
+import pp.HorizonProject.DataExtraction.Task;
 
 public class Project {
 	
