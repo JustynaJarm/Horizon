@@ -1,5 +1,7 @@
 package pp.HorizonProject;
 import java.util.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 import pp.HorizonProject.Project;
 import pp.HorizonProject.Worker;
@@ -18,8 +20,9 @@ public class Task {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getDate() {
-		return date;
+	public LocalDate getDate() {
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return localDate;
 	}
 	public void setDate(Date date) {
 		this.date = date;

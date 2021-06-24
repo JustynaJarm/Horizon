@@ -6,7 +6,7 @@ import java.lang.invoke.SwitchPoint;
 
 public class App {
 	public static void main(String[] args) throws IOException {
-		System.out.println("Aktywna ścieżka: " + args[0]);
+//		System.out.println("Aktywna ścieżka: " + args[0]);
 		
 		Importer importer = new Importer();
 		importer.readFieles();//args[0]);
@@ -18,16 +18,17 @@ public class App {
 			int userInput = Menu.getReportFromUser();
 			switch (userInput) {
 			case 1:
-				System.out.println("Raport1");
-				Menu.getYearFromUser();
-				Report1 report = new Report1(importer.dataModel);
-				report.printReport(2012);
+//				Menu.getYearFromUser();
+				Report1 report1 = new Report1(importer.dataModel);
+				report1.printReport(2012);
 				break;
 			case 2:
-				System.out.println("Raport2");
+				Report2 report2 = new Report2(importer.dataModel);
+				report2.printReport(2012);
 				break;
 			case 3:
-				System.out.println("Raport3");
+				Report3 report3 = new Report3(importer.dataModel);
+				report3.printReport(2012, "Kowalski Jan");
 				break;
 			case 4:
 				System.out.println("Raport4");

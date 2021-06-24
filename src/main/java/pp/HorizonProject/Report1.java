@@ -6,28 +6,35 @@ package pp.HorizonProject;
 import java.util.ArrayList;
 
 public class Report1 extends Report {
-	
 	DataModel database;
-	ArrayList<Worker> workers = database.getWorkers();
+	ArrayList<Worker> workers;
 
 	public Report1(DataModel database) {
 		this.database = database;
+		this.workers = database.getWorkers();
 	}
 	
 	public void printReport(int year) {
 		System.out.println("1. Alfabetyczne Wypisanie Pracownikow (raport I)");
 		System.out.println("Raport za rok: " + year);
 		
+		workers.sort((worker1, worker2) -> worker1.getLastName().compareTo(worker2.getLastName()));
+		setHeaders("Lp.", "Imie i nazwisko", "Liczba godzin w roku");
+		
+		int lp = 1;
 		for (Worker worker : workers) {
-			int workTimeInYearByWorker = 0;
+			double workTimeInYearByWorker = 0;
 			
 			for (Task task : worker.getTasks()) {
 				if (task.getDate().getYear() == year) {
-					workTimeInYearByWorker += task.getTime();					
+					workTimeInYearByWorker += task.getTime();
 				}
 			}
 			
-			System.out.println("Worker: " + worker.getFullName() + " Time: " + workTimeInYearByWorker);
+			addRow(String.valueOf(lp), worker.getFullName(), String.valueOf(workTimeInYearByWorker));
+			lp++;
 		}
+		
+		print();
 	}
 }

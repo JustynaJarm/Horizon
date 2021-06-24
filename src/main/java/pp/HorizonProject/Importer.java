@@ -39,14 +39,14 @@ public class Importer {
 	
 	public  void readFieles() throws IOException {
 		
-		Path rootPath = Paths.get("C:\\Users\\harych\\Desktop\\reporter-dane\\reporter-dane");
+		Path rootPath = Paths.get("C:\\Users\\hants\\Desktop\\Metody Wytwarzania Oprogramowania\\Semestr 2\\Pracownia projektowa\\reporter-dane\\2012");
 		List<Path> paths = findByFileExtension(rootPath, ".xls");
 		 
 		for (Path item : paths) {
 			
 			String itemAsString = item.toString();
 			File file = new File(itemAsString);
-			System.out.println(item);
+//			System.out.println(item);
 			readExactFile(file);
 			
 	         
@@ -118,7 +118,7 @@ public class Importer {
 	
 	public String readLastName(String fullName) {
 		String words[] = fullName.split(" ", 2);		
-		return words[1];
+		return words[0];
 	}
 	
 	public String readProjectName(Sheet sheet) {
