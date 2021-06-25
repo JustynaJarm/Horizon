@@ -1,0 +1,63 @@
+Instrukcja użytkownika:
+Po uruchomieniu aplikacji podaj lokalizację katalogu raportów: "C://..../"
+
+Program poinformuje Cię, czy ścieżka jest poprawna. Jeżeli ścieżka jest niepoprawna - uruchom program ponownie
+______________________________________________________________________________________
+
+Wybierz raport z listy podając nr opcji menu.
+
+0. Zakończ program
+1. Liczba godzin przepracowanych w danym roku (wg. pracowników)
+2. Liczba godzin przepracowanych w danym roku (wg. projektów)
+3. Liczba godzin przepracowanych w danym roku przez pracownika
+4. Procentowe zaangażowanie pracowników w projekty w danym roku
+5. Liczba godzin przepracowanych w danym projekcie (wg. pracowników)
+6. Wykres słupkowy liczba godzin przepracowanych w projektach w danym roku
+7. Wykres kołowy procentowego zaangażowania pracownika w projekt w danym roku
+
+______________________________________________________________________________________
+Po uruchomieniu raportu nr 1. Liczba godzin przepracowanych w danym roku (wg. pracowników)
+
+Ten raport wymaga podania roku (np. 2020). 
+
+Po wygenerowaniu raportu wybierz czy chcesz wyeksportować dane do XLS.
+1- tak
+2- nie 
+______________________________________________________________________________________
+Po uruchomieniu raportu nr 2. Liczba godzin przepracowanych w danym roku (wg. projektów)
+
+Ten raport wymaga podania roku (np. 2020). 
+
+Po wygenerowaniu raportu wybierz czy chcesz wyeksportować dane do XLS.
+1- tak
+2- nie
+______________________________________________________________________________________
+Po uruchomieniu raportu nr 3. Liczba godzin przepracowanych w danym roku przez pracownika
+
+Ten raport wymaga podania roku (np. 2020) oraz nazwiska i imienia pracownika (np. Kowalski Jan)
+
+Po wygenerowaniu raportu wybierz czy chcesz wyeksportować dane do XLS.
+1- tak
+2- nie
+______________________________________________________________________________________
+Po uruchomieniu raportu nr 4. Procentowe zaangażowanie pracowników w projekty w danym roku
+
+Ten raport wymaga podania roku (np. 2020).
+
+Po wygenerowaniu raportu wybierz czy chcesz wyeksportować dane do XLS.
+1- tak
+2- nie
+______________________________________________________________________________________
+Po uruchomieniu raportu nr 5. Liczba godzin przepracowanych w danym projekcie (wg. pracowników)
+
+Ten raport wymaga podania nazwy projektu (np. Projekt1).
+______________________________________________________________________________________
+Po uruchomieniu raportu nr 6. Wykres słupkowy liczba godzin przepracowanych w projektach w danym roku
+
+Ten raport wymaga podania roku (np. 2020). 
+______________________________________________________________________________________
+Po uruchomieniu raportu nr 7. Wykres kołowy procentowego zaangażowania pracownika w projekt w danym roku
+
+Ten raport wymaga podania roku (np. 2020). 
+______________________________________________________________________________________
+

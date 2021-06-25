@@ -1,0 +1,44 @@
+Horizon_reporter.exe -"C://..../"
+
+Ścieżka poprawna/Ścieżka niepoprawna - uruchom program ponownie
+______________________________________________________________________________________
+
+Aktywna ścieżka: "C:// ..."
+
+Wybierz raport z listy podając nr opcji menu.
+Dopisz -xls lub -pdf aby wygenerować raport do pliku Excel lub PDF.
+Dopisz -year YYYY, -worker "Name Surname", -project "Project Name" aby odpowiednio zawęzić wyniki:
+
+0. Zakończ program
+1. Liczba godzin przepracowanych w danym roku (wg. pracowników)
+2. Liczba godzin przepracowanych w danym roku (wg. projektów)
+3. Liczba godzin przepracowanych w danym roku przez pracownika
+4. Procentowe zaangażowanie pracowników w projekty w danym roku
+5. Liczba godzin przepracowanych w danym projekcie (wg. pracowników)
+6. Wykres słupkowy liczba godzin przepracowanych w projektach w danym roku
+7. Wykres kołowy procentowego zaangażowania pracownika w projekt w danym roku
+
+______________________________________________________________________________________
+1 -xls
+Ta opcja wymaga podania roku (np. -year 2020). Dostępne lata to: 
+2018, 2019, 2020, 2021
+______________________________________________________________________________________
+1 -xls -year 2020
+Raport wygenerowano do pliku "C:// .... /raport1.xls" 
+// Ponowne wyświetlenie menu w pętli
+______________________________________________________________________________________
+5 -pdf -project "Nazwa projektu" -year 2019
+Raport wygenerowano do pliku "C:// .... /raport1.pdf"
+// Ponowne wyświetlenie menu w pętli
+______________________________________________________________________________________
+3 -year 2021 
+Ta opcja wymaga podania nazwiska pracownika (np. -worker "Jan Kowalski"). Dostępni pracownicy to:
+- Jan Kowalski
+- Adam Adamski
+- Damian Damięcki
+- Marek Marecki
+______________________________________________________________________________________
+3 -year 2021 - "Jan Kowalski"
+// Raport wyświetlony w konsoli
+// Ponowne wyświetlenie menu w pętli
+______________________________________________________________________________________
