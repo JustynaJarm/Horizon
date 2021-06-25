@@ -18,7 +18,8 @@ public class App {
 		int reportYear;
 		String workerName;
 		String projectName;
-
+		boolean shouldExport;
+		
 		// Uwaga do celów testowych nalezy ustawić parametr wywołania w postaci ścieżki do katalogu
 		// Run configurations > Arguments > Program Arguments > tu wpisz scieżkę > Apply > Run
 		System.out.println("----- Aktywna ścieżka: " + args[0]);
@@ -34,17 +35,29 @@ public class App {
 				reportYear = Menu.getYearFromUser();
 				Report1 report1 = new Report1(importer.dataModel);
 				report1.printReport(reportYear);
+				shouldExport = Menu.checkIfShouldExportToExcel();
+				if (shouldExport) {
+					report1.exportReportDataToExcel("Report1");
+				}
 				break;
 			case 2:
 				reportYear = Menu.getYearFromUser();
 				Report2 report2 = new Report2(importer.dataModel);
 				report2.printReport(reportYear);
+				shouldExport = Menu.checkIfShouldExportToExcel();
+				if (shouldExport) {
+					report2.exportReportDataToExcel("Report2");
+				}
 				break;
 			case 3:
 				reportYear = Menu.getYearFromUser();
 				workerName = Menu.getWorkerFromUser(dataModel);
 				Report3 report3 = new Report3(importer.dataModel);
 				report3.printReport(reportYear, workerName);
+				shouldExport = Menu.checkIfShouldExportToExcel();
+				if (shouldExport) {
+					report3.exportReportDataToExcel("Report3");
+				}
 				break;
 			case 4:
 				reportYear = Menu.getYearFromUser();

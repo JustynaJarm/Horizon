@@ -3,7 +3,20 @@
 //a wypisac ma tabele posortowana po nazwiskach z danymi - sumaryczne godziny w roku)
 package pp.HorizonProject.Reports;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+//import org.apache.poi.sl.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import pp.HorizonProject.DataExtraction.DataModel;
 import pp.HorizonProject.DataExtraction.Task;
@@ -12,7 +25,9 @@ import pp.HorizonProject.DataExtraction.Worker;
 public class Report1 extends Report {
 	DataModel database;
 	ArrayList<Worker> workers;
-
+	List<String[]> rows = getRows();
+	String[] headers = getHeaders();
+	
 	public Report1(DataModel database) {
 		this.database = database;
 		this.workers = database.getWorkers();

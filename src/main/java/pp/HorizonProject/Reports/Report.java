@@ -1,13 +1,19 @@
 package pp.HorizonProject.Reports;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 public abstract class Report {
-//	public void printReport() {}
-	
 	private static final String HORIZONTAL_SEP = "-";
 	private String verticalSep;
 	private String joinSep;
@@ -28,10 +34,18 @@ public abstract class Report {
 	    joinSep = showVerticalLines ? "+" : " ";
 	}
 
+	public String[] getHeaders() {
+		return headers;
+	}
+	
 	public void setHeaders(String... headers) {
 	    this.headers = headers;
 	}
 
+	public List<String[]> getRows() {
+		return rows;
+	}
+	
 	public void addRow(String... cells) {
 	    rows.add(cells);
 	}
@@ -86,5 +100,39 @@ public abstract class Report {
 	        }
 	    }
 	    System.out.println();
+	}
+	
+	public void exportReportDataToExcel (String reportName) throws IOException {
+		Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet(reportName);
+        int rowCount = 0;
+//        Row headersRow = sheet.createRow(rowCount);
+        
+//        for (String headerToPrint : headers) {
+//        	int columnCount = 0;
+//        	Cell cell = headersRow.createCell(columnCount);
+//        	cell.setCellValue(headerToPrint);
+//        	columnCount++;
+//        }
+//        System.out.println(this.headers);
+//        rowCount++;
+        
+        for (String[] rowToPrint : rows) {
+        	Row row = sheet.createRow(rowCount);
+        	int columnCount = 0;
+        	rowCount++;
+        	
+        	for (String fieldToPrint : rowToPrint) {
+        		Cell cell = row.createCell(columnCount);
+        		cell.setCellValue(fieldToPrint);
+        		columnCount++;
+        	}
+        }
+        
+        try (FileOutputStream outputStream = new FileOutputStream(reportName + ".xls");){
+        	workbook.write(outputStream);
+		} 
+        
+        System.out.println("Exporting finished");
 	}
 }

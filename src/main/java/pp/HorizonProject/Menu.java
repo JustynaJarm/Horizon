@@ -97,4 +97,32 @@ public class Menu {
 		}
 		return projectName;
 	}
+	
+	public static boolean checkIfShouldExportToExcel () {
+		Scanner s = new Scanner(System.in);
+		boolean shouldExport = false;
+		int choice = 0;
+		
+		System.out.println("Czy wyeksportować dane do excela?");
+		System.out.println("1 - tak");
+        System.out.println("2 - nie");
+        
+        try {
+            while (true) {
+            	choice = s.nextInt();
+            	switch (choice) {
+            	case 1:
+            		return shouldExport = true;
+            	case 2:
+            		return shouldExport = false;
+            	default: 
+            		System.out.println("Wybierz opcje 1 (eksportuj) lub 2 (nie eksportuj)");
+            	}
+            }
+        } catch (Exception e) {
+        	System.out.println("Niepoprawne dane! Wprowadź ponownie");
+        }
+
+        return shouldExport;
+	}
 }
