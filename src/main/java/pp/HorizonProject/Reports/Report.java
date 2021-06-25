@@ -58,7 +58,7 @@ public abstract class Report {
 	    		maxWidths = new int[cells.length];
 	        }
 	        if (cells.length != maxWidths.length) {
-	            throw new IllegalArgumentException("Number of row-cells and headers should be consistent");
+	            throw new IllegalArgumentException("Liczba komórek w wierszach rzędów i headerow musi byc taka sama");
 	        }
 	        for (int i = 0; i < cells.length; i++) {
 	            maxWidths[i] = Math.max(maxWidths[i], cells[i].length());
@@ -123,6 +123,6 @@ public abstract class Report {
         	workbook.write(outputStream);
 		} 
         
-        System.out.println("Exporting finished");
+        System.out.println("Export ukończony");
 	}
 }
