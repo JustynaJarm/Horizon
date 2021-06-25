@@ -106,16 +106,6 @@ public abstract class Report {
 		Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet(reportName);
         int rowCount = 0;
-//        Row headersRow = sheet.createRow(rowCount);
-        
-//        for (String headerToPrint : headers) {
-//        	int columnCount = 0;
-//        	Cell cell = headersRow.createCell(columnCount);
-//        	cell.setCellValue(headerToPrint);
-//        	columnCount++;
-//        }
-//        System.out.println(this.headers);
-//        rowCount++;
         
         for (String[] rowToPrint : rows) {
         	Row row = sheet.createRow(rowCount);
